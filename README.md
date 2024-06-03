@@ -1,7 +1,7 @@
 # compact_huffman
 
 This repo contains a simple experiment in writing a space-efficient
-(code/data) huffman code decoder.
+(code/data) Huffman code decoder.
 
 Note that the decoder is limited to 32768 symbols.  If more are
 needed, then the type of integral type used indices in a
