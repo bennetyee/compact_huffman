@@ -1,5 +1,8 @@
 /*
- * Data source abstraction
+ * Data source abstraction.  This uses a virtual function pointer
+ * table in the style of how C++ implements objects, rather than fat
+ * pointers (interface function table pointer and data-only object),
+ * or just generic function pointer and data objects.
  */
 
 #if !defined(__SCAFFOLDING_H__)
@@ -26,7 +29,7 @@ struct BitStream {
  * there is no data encoding to specify.  We could do a variation
  * where the file format has a N byte header specifying the total
  * number of bits to generate, so only part of the file could be
- * streamed and trailing zero bits need not be explicitly stored.
+ * streamed and trailing zero bits need not be explicitly represented.
  */
 struct StdioBitStream {
   struct BitStream super;
