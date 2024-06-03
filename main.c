@@ -4,7 +4,7 @@
 #include <getopt.h>
 
 #include "scaffolding.h"
-#include "osu_hamming.h"
+#include "compact_hamming.h"
 
 /*
  * Each tree node is two uint16, so 4 bytes per node.

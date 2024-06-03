@@ -1,4 +1,4 @@
-#include "osu_hamming.h"
+#include "compact_hamming.h"
 #include "scaffolding.h"
 /*
  * Hamming decoder

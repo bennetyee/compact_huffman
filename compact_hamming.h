@@ -1,5 +1,5 @@
-#if !defined(__OSU_HAMMING_H__)
-#define __OSU_HAMMING_H__
+#if !defined(__COMPACT_HAMMING_H__)
+#define __COMPACT_HAMMING_H__
 
 #include <inttypes.h>
 
@@ -20,7 +20,16 @@ struct HammingCodeNode {
    * limits us to 2^{15} symbols, since a hamming code tree
    * constructed for that would have 2^{16}-1 nodes.  If we need to be
    * able to handle 2^{31} symbols, we would need to use uint32_t
-   * instead, and each node would take 8 bytes to encode.
+   * instead, and each node would take 8 bytes to encode.  This would
+   * still save space on a 64-bit address space machine, since using
+   * pointers would require 16 bytes per node.
+   *
+   * Note that if the array of HammingCodeNode are declared const the
+   * should be placed in .rodata.  Depending on the target environment
+   * and linker options, read-only data may be placed contiguous to /
+   * immediately after text (instructions) or in their own read-only
+   * and non-executable pages that start at a page boundary.  This
+   * could have an impact on the actual RAM usage.
    */
 };
 
@@ -28,4 +37,4 @@ struct HammingCodeNode {
 int HammingCodeDecoder(const struct HammingCodeNode *tree,
                        struct BitStream *src);
 
-#endif  /* __OSU_HAMMING_H__ */
+#endif  /* __COMPACT_HAMMING_H__ */
