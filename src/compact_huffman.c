@@ -1,11 +1,11 @@
-#include "compact_hamming.h"
+#include "compact_huffman.h"
 #include "scaffolding.h"
 /*
  * Hamming decoder
  */
 #include <assert.h>
 
-int HammingCodeDecoder(const struct HammingCodeNode *tree,
+int HuffmanCodeDecoder(const struct HuffmanCodeNode *tree,
                        struct BitStream *src) {
   uint16_t ix = 0;
 

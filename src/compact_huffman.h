@@ -5,7 +5,7 @@
 
 #include "scaffolding.h"
 
-struct HammingCodeNode {
+struct HuffmanCodeNode {
   uint16_t children[2];
   /*
    * Index 0 is the left subtree and index 1 is the right subtree; a
@@ -24,7 +24,7 @@ struct HammingCodeNode {
    * still save space on a 64-bit address space machine, since using
    * pointers would require 16 bytes per node.
    *
-   * Note that if the array of HammingCodeNode are declared const the
+   * Note that if the array of HuffmanCodeNode are declared const the
    * should be placed in .rodata.  Depending on the target environment
    * and linker options, read-only data may be placed contiguous to /
    * immediately after text (instructions) or in their own read-only
@@ -34,7 +34,7 @@ struct HammingCodeNode {
 };
 
 /* Return symbol table index, or -1 at EOF. */
-int HammingCodeDecoder(const struct HammingCodeNode *tree,
+int HuffmanCodeDecoder(const struct HuffmanCodeNode *tree,
                        struct BitStream *src);
 
 #endif  /* __COMPACT_HAMMING_H__ */

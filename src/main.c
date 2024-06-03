@@ -4,12 +4,12 @@
 #include <getopt.h>
 
 #include "scaffolding.h"
-#include "compact_hamming.h"
+#include "compact_huffman.h"
 
 /*
  * Each tree node is two uint16, so 4 bytes per node.
  */
-const struct HammingCodeNode tree[] = {
+const struct HuffmanCodeNode tree[] = {
   {{ 1, 2, }},
   {{ 0, 0, }},
   {{ 3, 4, }},
@@ -63,7 +63,7 @@ int main(int ac, char **av) {
   if (data == NULL) {
     data = (struct BitStream *) StreamBitStreamOpen(stdin);
   }
-  while ((symbix = HammingCodeDecoder(tree, data)) != -1) {
+  while ((symbix = HuffmanCodeDecoder(tree, data)) != -1) {
     fputs(symbols[symbix], stdout);
   }
   (*(*(struct BitStreamVtbl **) data)->Dtor)(data);
